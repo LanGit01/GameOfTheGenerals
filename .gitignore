@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #################
 ## Eclipse
 #################
@@ -6,7 +5,7 @@
 *.pydevproject
 .project
 .metadata
-=======
+
 # git ls-files --others --exclude-from=.git/info/exclude
 # Lines that start with '#' are comments.
 # For a project mostly in C, the following would be a good set of
@@ -25,7 +24,7 @@
 *.pydevproject
 .metadata
 .gradle
->>>>>>> f5eb1307e696a87b2a6c55f0ebf50011790a014a
+
 bin/
 tmp/
 *.tmp
@@ -33,10 +32,9 @@ tmp/
 *.swp
 *~.nib
 local.properties
-<<<<<<< HEAD
+
 .classpath
-=======
->>>>>>> f5eb1307e696a87b2a6c55f0ebf50011790a014a
+
 .settings/
 .loadpath
 
@@ -52,7 +50,6 @@ local.properties
 # PDT-specific
 .buildpath
 
-<<<<<<< HEAD
 
 #################
 ## Visual Studio
@@ -238,10 +235,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
-=======
+
 # sbteclipse plugin 
 .target
 
 # TeXlipse plugin
 .texlipse
->>>>>>> f5eb1307e696a87b2a6c55f0ebf50011790a014a
