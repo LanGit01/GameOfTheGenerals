@@ -1,0 +1,19 @@
+package gg;
+
+public enum Rank {
+	FLAG, 
+	SPY, 
+	PRIVATE, 
+	SERGEANT, 
+	LIEUTENTANT2, 
+	LIEUTENANT1, 
+	CAPTAIN,
+	MAJOR, 
+	LTCOLONEL, 
+	COLONEL, 
+	GENERAL1, 
+	GENERAL2, 
+	GENERAL3, 
+	GENERAL4, 
+	GENERAL5;
+}
