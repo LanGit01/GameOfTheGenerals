@@ -9,71 +9,69 @@ public class Piece {
 	private int xpos;
 	private int ypos;
 	
-	public Piece(Rank pieceRank, int player_id){
-		rank = pieceRank;
-		playerID = player_id;
+	public Piece(Rank rank, int playerID){
+		this.rank = rank;
+		this.playerID = playerID;
 		alive = true;
 		xpos = NO_POSITION;
 		ypos = NO_POSITION;
 	}
 	
-	public Piece(Piece p){
-		rank = p.rank;
-		playerID = p.playerID;
-		alive = p.alive;
-		xpos = p.xpos;
-		ypos = p.ypos;
-	}
-	
-	public Rank getRank(){
-		return rank;
-	}
-	
-	public int getPlayerID(){
-		return playerID;
-	}
-	
-	public boolean isAlive(){
-		return alive;
-	}
-	
-	public void kill(){
-		alive = false;
-	}
-	
+	/**
+	 * @return x position of the piece
+	 */
 	public int getX(){
 		return xpos;
 	}
-	
+
+	/**
+	 * @return y position of the piece
+	 */
 	public int getY(){
 		return ypos;
 	}
 	
+	/**
+	 * @return rank of the piece
+	 */
+	public Rank getRank(){
+		return rank;
+	}
+	
+	/**
+	 * @return returns true if piece is alive, otherwise, false
+	 */
+	public boolean isAlive(){
+		return alive;
+	}
+	
+	/**
+	 * sets the position of the piece
+	 * 
+	 * @param x x-position
+	 * @param y y-position
+	 */
 	public void setPosition(int x, int y){
-		xpos = x;
-		ypos = y;
+		this.xpos = x;
+		this.ypos = y;
 	}
 	
-	/* TEST */
-	public void moveLeft(){
-		xpos--;
+	public Piece getCopy(){
+		Piece p = new Piece(rank, playerID);
+		p.alive = alive;
+		p.xpos = xpos;
+		p.ypos = ypos;
+		return p;
 	}
 	
-	public void moveRight(){
-		xpos++;
-	}
-	
-	public void moveUp(){
-		ypos--;
-	}
-	
-	public void moveDown(){
-		ypos++;
-	}
-	
-	
+	/**
+	 * Checks if piece <code>p</code> is equal to this object
+	 * 
+	 * @param p the piece to be compared to
+	 * @return true if this object is equal to p, otherwise false
+	 */
 	public boolean equals(Piece p){
-		if(this.xpos == p.xpos && this.ypos == p.ypos && this.rank == p.rank){
+		if(this.playerID == p.playerID && this.rank == p.rank && this.xpos == p.xpos && this.ypos == p.ypos){
 			return true;
 		}
 		

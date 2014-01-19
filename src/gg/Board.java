@@ -8,9 +8,7 @@ public class Board {
 	public final static int COLS = 9;
 	public final static int PLAYER_1 = 1;
 	public final static int PLAYER_2 = 2;
-	public enum Direction{
-		LEFT, UP, RIGHT, DOWN;
-	}
+	
 	
 	private Vector<Piece> pieces;
 	
@@ -22,6 +20,11 @@ public class Board {
 		addPieces(PLAYER_2);
 	}
 	
+	/**
+	 * Initializes pieces for <code>playerNum</code>
+	 * 
+	 * @param playerNum the player identification
+	 */
 	private void addPieces(int playerNum){
 		//Create Flag, and two spies
 		pieces.add(new Piece(Rank.FLAG, playerNum));
@@ -38,49 +41,61 @@ public class Board {
 			if(r == Rank.FLAG || r == Rank.SPY){
 				continue;
 			}
-			
 			pieces.add(new Piece(r, playerNum));
 		}
 	}
 	
+	/**
+	 * Asks for the piece in the position <code>x</code>,<code>y</code>
+	 * 
+	 * @param x x-position
+	 * @param y y-position
+	 * @return a copy of the piece, or null if there is no piece at x,y
+	 */
 	public Piece getPieceAt(int x, int y){
 		Iterator<Piece> itr = pieces.iterator();
 		while(itr.hasNext()){
 			Piece p = itr.next();
 			if(p.getX() == x && p.getY() == y){
 				//If there is an object at position X,Y
-				return new Piece(p);
+				return p.getCopy();
 			}
 		}
 		//If there is no object at position X,Y
 		return null;
 	}
 	
-	public void movePiece(Piece p, Direction direction){
-		Iterator<Piece> pItr = pieces.iterator();
+	/**
+	 * Sets the position of <code>piece</code> to <code>newX</code>,<code>newY</code>
+	 * 
+	 * @param piece the piece to move
+	 * @param newX the new x-position
+	 * @param newY the new y-position
+	 */
+	public void setPiece(Piece piece, int newX, int newY){
+		Iterator<Piece> itr = pieces.iterator();
+		while(itr.hasNext()){
+			Piece p = itr.next();
+			if(p.equals(piece)){
+				p.setPosition(newX, newY);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Removes <code>piece</code> from the list of playable pieces
+	 * 
+	 * @param piece the piece to be removed
+	 */
+	public void kill(Piece piece){
+		Iterator<Piece> itr = pieces.iterator();
 		
-		LocalPieceLoop:
-		while(pItr.hasNext()){
-			Piece localPiece = pItr.next();
-			if(localPiece.equals(p)){
-				switch(direction){
-					case LEFT:	if(p.getX() > 0){
-									p.moveLeft(); 
-								}
-								break LocalPieceLoop;
-					case UP: 	if(p.getY() > 0){
-									p.moveUp();
-								}
-								break LocalPieceLoop;
-					case RIGHT: if(p.getX() < COLS-1){
-									p.moveRight();
-								}
-								break LocalPieceLoop;
-					case DOWN: 	if(p.getY() < ROWS-1){
-									p.moveDown();
-								}
-								break LocalPieceLoop;
-				}
+		while(itr.hasNext()){
+			Piece p = itr.next();
+			if(p.equals(piece)){
+				//kill peace here... need code
+				itr.remove();
 			}
 		}
 	}
