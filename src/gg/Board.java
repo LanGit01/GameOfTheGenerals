@@ -10,10 +10,10 @@ public class Board {
 	public final static int PLAYER_2 = 2;
 	
 	
-	private Vector<Piece> pieces;
+	private ArrayList<Piece> pieces;
 	
 	public Board(){
-		pieces = new Vector<Piece>(42);
+		pieces = new ArrayList<Piece>(42);
 		
 		//Create player pieces
 		addPieces(PLAYER_1);
@@ -98,6 +98,14 @@ public class Board {
 				itr.remove();
 			}
 		}
+	}
+	
+	/**
+	 * Returns a copy of all the pieces
+	 * @return copy of all pieces
+	 */
+	public Piece[] getPieces(){
+		return pieces.toArray(new Piece[pieces.size()]);
 	}
 	
 }
